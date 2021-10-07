@@ -2,4 +2,22 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    border: 1px solid red;
+}
+
+.App {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.header {
+    width: 100%;
+}
+
+.aside {
+    width: 10%;
+}
+
+.main {
+    width: 90%;
 }
