@@ -1,15 +1,18 @@
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link, Switch, Route } from 'react-router-dom';
-import TaskAdder from './components/TaskAdder';
-// import Welcome from './components/Welcome';
+import TaskForm from './components/TaskForm';
 import TaskList from './components/TaskList';
 import Schedule from './components/Schedule';
 import Archive from './components/Archive';
 
 function App() {
+    const tasks = useSelector((state) => state.tasks);
+
     return (
         <div className="App">
             <header className="header">
-                Header <TaskAdder />
+                Header <TaskForm />
             </header>
             <aside className="aside">
                 <ul>
@@ -26,10 +29,11 @@ function App() {
             </aside>
             <main className="main">
                 <Switch>
-                    {/* <Route path="/" component={Welcome}></Route> */}
-                    <Route path="/TaskList" component={TaskList}></Route>
-                    <Route path="/Schedule" component={Schedule}></Route>
-                    <Route path="/Archive" component={Archive}></Route>
+                    <Route path="/TaskList">
+                        <TaskList tasks={tasks} />
+                    </Route>
+                    <Route path="/Schedule" component={Schedule} />
+                    <Route path="/Archive" component={Archive} />
                 </Switch>
             </main>
         </div>

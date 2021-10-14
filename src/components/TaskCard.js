@@ -1,10 +1,10 @@
-function TaskCard() {
+function TaskCard({ text, priority, assignee }) {
     return (
         <div className="task_card">
-            <input type="checkbox">Checkbox</input>
-            <div className="task_card-text">Task Text</div>
-            <div className="task_card-priority">Priority</div>
-            <div className="task_card-assignee">Assignee</div>
+            <input type="checkbox"></input>
+            <div className="task_card-text">{text}</div>
+            <div className="task_card-priority">{priority}</div>
+            <div className="task_card-assignee">{assignee}</div>
             <div className="task_card-due_date">Due Date</div>
         </div>
     );
