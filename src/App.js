@@ -4,7 +4,7 @@ import { Link, Switch, Route } from 'react-router-dom';
 import TaskForm from './components/TaskForm';
 import TaskList from './components/TaskList';
 import Schedule from './components/Schedule';
-import Archive from './components/Archive';
+import ArchiveList from './components/ArchiveList';
 
 function App() {
     const tasks = useSelector((state) => state.tasks);
@@ -16,13 +16,13 @@ function App() {
             </header>
             <aside className="aside">
                 <ul>
-                    <li>
+                    <li key={'TaskList'}>
                         <Link to="/TaskList">TaskList</Link>
                     </li>
-                    <li>
+                    <li key={'Schedule'}>
                         <Link to="/Schedule">Schedule</Link>
                     </li>
-                    <li>
+                    <li key={'Archive'}>
                         <Link to="/Archive">Archive</Link>
                     </li>
                 </ul>
@@ -32,8 +32,12 @@ function App() {
                     <Route path="/TaskList">
                         <TaskList tasks={tasks} />
                     </Route>
-                    <Route path="/Schedule" component={Schedule} />
-                    <Route path="/Archive" component={Archive} />
+                    <Route path="/Schedule">
+                        <Schedule tasks={tasks} />
+                    </Route>
+                    <Route path="/Archive">
+                        <ArchiveList tasks={tasks} />
+                    </Route>
                 </Switch>
             </main>
         </div>
@@ -41,3 +45,7 @@ function App() {
 }
 
 export default App;
+
+// сделать сайдменю, счетчик заданий
+// сделать апи реквестом и встраивать реквест что бы получал данные
+// добавить анимацию добавления и сделания

@@ -11,8 +11,9 @@ function TaskForm() {
         dispatch(
             tasksAdd({
                 text: formData.get('text'),
-                priotity: formData.get('priority'),
                 assignee: formData.get('assignee'),
+                priority: formData.get('priority'),
+                status: 'inProgress',
             })
         );
         event.target.reset();
