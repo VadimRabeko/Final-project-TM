@@ -2,10 +2,17 @@ import * as actions from './actionsTypes';
 
 const initialState = {
     tasks: [],
+    data: [],
 };
 
 export function rootReducer(state = initialState, action) {
     switch (action.type) {
+        case actions.GET_DATA:
+            return {
+                ...state,
+                data: action.payload,
+            };
+
         case actions.TASKS_ADD:
             return {
                 ...state,

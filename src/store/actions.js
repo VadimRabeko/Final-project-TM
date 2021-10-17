@@ -24,3 +24,12 @@ export function tasksRemove({ id, status }) {
         },
     };
 }
+
+export function getData({ data }) {
+    return {
+        type: actions.GET_DATA,
+        payload: {
+            data,
+        },
+    };
+}

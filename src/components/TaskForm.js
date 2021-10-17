@@ -1,11 +1,22 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { tasksAdd } from '../store/actions';
+import { tasksAdd, getData } from '../store/actions';
 import DatePicker from 'react-date-picker';
 
 function TaskForm() {
     const dispatch = useDispatch();
     const [value, onChange] = useState(new Date());
+
+    async function setData() {
+        try {
+            const response = await fetch('https://run.mocky.io/v3/3413d3f4-6559-4e47-9bf7-4923ef3489b0');
+            const data = await response.json();
+            dispatch(getData({ data: data }));
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    setData();
 
     function onSubmit(event) {
         event.preventDefault();
