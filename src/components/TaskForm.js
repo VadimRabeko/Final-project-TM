@@ -1,8 +1,11 @@
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { tasksAdd } from '../store/actions';
+import DatePicker from 'react-date-picker';
 
 function TaskForm() {
     const dispatch = useDispatch();
+    const [value, onChange] = useState(new Date());
 
     function onSubmit(event) {
         event.preventDefault();
@@ -13,6 +16,7 @@ function TaskForm() {
                 text: formData.get('text'),
                 assignee: formData.get('assignee'),
                 priority: formData.get('priority'),
+                dueDate: formData.get('dueDate'),
                 status: 'inProgress',
             })
         );
@@ -34,6 +38,7 @@ function TaskForm() {
                 <option>Middle Priority</option>
                 <option>High Priority</option>
             </select>
+            <DatePicker name="dueDate" onChange={onChange} value={value} />
 
             <button type="submit">Add</button>
         </form>

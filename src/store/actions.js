@@ -1,7 +1,7 @@
 import * as actions from './actionsTypes';
 import { getUniqueID } from '../utilities';
 
-export function tasksAdd({ text, assignee, priority, status }) {
+export function tasksAdd({ text, assignee, priority, dueDate, status }) {
     return {
         type: actions.TASKS_ADD,
         payload: {
@@ -9,6 +9,7 @@ export function tasksAdd({ text, assignee, priority, status }) {
             text,
             assignee,
             priority,
+            dueDate,
             status,
         },
     };
