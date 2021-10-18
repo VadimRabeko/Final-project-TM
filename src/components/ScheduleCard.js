@@ -3,7 +3,7 @@ function ScheduleCard({ text, assignee, priority }) {
 
     const onMouseOverHandler = (event) => {
         taskInfo.classList.add('schedule_card-info');
-        taskInfo.innerHTML = `Assignee: ${assignee}, Priority: ${priority}`;
+        taskInfo.innerHTML = `Assignee: ${assignee} Priority: ${priority}`;
         event.target.append(taskInfo);
     };
 
@@ -11,7 +11,7 @@ function ScheduleCard({ text, assignee, priority }) {
 
     return (
         <div className="schedule_card" onMouseOver={onMouseOverHandler} onMouseOut={onMouseOutHandler}>
-            <div className="task_card-text">{text}</div>
+            <div className="schedule_card-text">{text}</div>
         </div>
     );
 }

@@ -39,8 +39,8 @@ function TaskForm({ data }) {
 
     return (
         <form className="task_adder" onSubmit={onSubmit}>
-            <input type="text" name="text"></input>
-            <select name="assignee" defaultValue="Assignee">
+            <input className="input" type="text" name="text"></input>
+            <select className="select" name="assignee" defaultValue="Assignee">
                 <option disabled hidden>
                     Assignee
                 </option>
@@ -48,7 +48,7 @@ function TaskForm({ data }) {
                     <option key={dataUnit.id}>{dataUnit.name}</option>
                 ))}
             </select>
-            <select name="priority" defaultValue="Priority">
+            <select className="select" name="priority" defaultValue="Priority">
                 <option disabled hidden>
                     Priority
                 </option>
@@ -56,9 +56,11 @@ function TaskForm({ data }) {
                 <option>Middle</option>
                 <option>High</option>
             </select>
-            <DatePicker name="dueDate" onChange={onChange} value={value} />
+            <DatePicker className="date_picker" name="dueDate" onChange={onChange} value={value} minDate={new Date()} />
 
-            <button type="submit">Add</button>
+            <button className="button" type="submit">
+                +
+            </button>
         </form>
     );
 }

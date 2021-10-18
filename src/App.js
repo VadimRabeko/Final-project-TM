@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Link, Switch, Route } from 'react-router-dom';
+import { NavLink, Switch, Route, Redirect } from 'react-router-dom';
 import TaskForm from './components/TaskForm';
 import TaskList from './components/TaskList';
 import Schedule from './components/Schedule';
@@ -13,23 +13,27 @@ function App() {
     return (
         <div className="App">
             <header className="header">
-                Header <TaskForm data={data} />
+                <h2 className="header_title">Task Manager</h2>
+                <TaskForm data={data} />
             </header>
             <aside className="aside">
-                <ul>
-                    <li key={'TaskList'}>
-                        <Link to="/TaskList">TaskList</Link>
-                    </li>
-                    <li key={'Schedule'}>
-                        <Link to="/Schedule">Schedule</Link>
-                    </li>
-                    <li key={'Archive'}>
-                        <Link to="/Archive">Archive</Link>
-                    </li>
-                </ul>
+                <div className="menu">
+                    <NavLink activeClassName="isActive" className="menu_link" to="/TaskList">
+                        Tasks
+                    </NavLink>
+                    <NavLink activeClassName="isActive" className="menu_link" to="/Schedule">
+                        Schedule
+                    </NavLink>
+                    <NavLink activeClassName="isActive" className="menu_link" to="/Archive">
+                        Archive
+                    </NavLink>
+                </div>
             </aside>
             <main className="main">
                 <Switch>
+                    <Route exact path="/">
+                        {tasks ? <Redirect to="/TaskList" /> : null}
+                    </Route>
                     <Route path="/TaskList">
                         <TaskList tasks={tasks} data={data} />
                     </Route>
@@ -46,7 +50,3 @@ function App() {
 }
 
 export default App;
-
-// сделать сайдменю, счетчик заданий
-
-// добавить анимацию добавления и сделания
