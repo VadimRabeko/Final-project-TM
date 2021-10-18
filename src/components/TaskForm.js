@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { tasksAdd, getData } from '../store/actions';
 import DatePicker from 'react-date-picker';
 
-function TaskForm() {
+function TaskForm({ data }) {
     const dispatch = useDispatch();
     const [value, onChange] = useState(new Date());
 
@@ -16,7 +16,10 @@ function TaskForm() {
             console.log(error);
         }
     }
-    setData();
+
+    if (!data[0]) {
+        setData();
+    }
 
     function onSubmit(event) {
         event.preventDefault();
@@ -37,17 +40,21 @@ function TaskForm() {
     return (
         <form className="task_adder" onSubmit={onSubmit}>
             <input type="text" name="text"></input>
-            <select name="assignee">
-                <option>Red Ranger</option>
-                <option>Blue Ranger</option>
-                <option>Green Ranger</option>
-                <option>Black Ranger</option>
-                <option>White Ranger</option>
+            <select name="assignee" defaultValue="Assignee">
+                <option disabled hidden>
+                    Assignee
+                </option>
+                {data.map((dataUnit) => (
+                    <option key={dataUnit.id}>{dataUnit.name}</option>
+                ))}
             </select>
-            <select name="priority">
-                <option>Low Priority</option>
-                <option>Middle Priority</option>
-                <option>High Priority</option>
+            <select name="priority" defaultValue="Priority">
+                <option disabled hidden>
+                    Priority
+                </option>
+                <option>Low</option>
+                <option>Middle</option>
+                <option>High</option>
             </select>
             <DatePicker name="dueDate" onChange={onChange} value={value} />
 

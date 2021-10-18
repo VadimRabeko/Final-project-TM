@@ -8,11 +8,12 @@ import ArchiveList from './components/ArchiveList';
 
 function App() {
     const tasks = useSelector((state) => state.tasks);
+    const data = useSelector((state) => state.data);
 
     return (
         <div className="App">
             <header className="header">
-                Header <TaskForm />
+                Header <TaskForm data={data} />
             </header>
             <aside className="aside">
                 <ul>
@@ -30,13 +31,13 @@ function App() {
             <main className="main">
                 <Switch>
                     <Route path="/TaskList">
-                        <TaskList tasks={tasks} />
+                        <TaskList tasks={tasks} data={data} />
                     </Route>
                     <Route path="/Schedule">
                         <Schedule tasks={tasks} />
                     </Route>
                     <Route path="/Archive">
-                        <ArchiveList tasks={tasks} />
+                        <ArchiveList tasks={tasks} data={data} />
                     </Route>
                 </Switch>
             </main>
@@ -49,7 +50,3 @@ export default App;
 // сделать сайдменю, счетчик заданий
 
 // добавить анимацию добавления и сделания
-
-// ассинхронность - полчил дату и теперь встроить её во все штуки
-
-// локал стораж

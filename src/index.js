@@ -9,7 +9,18 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 const REDUX_DEVTOOLS = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
 
-const store = createStore(rootReducer, REDUX_DEVTOOLS);
+const persistedState = localStorage.getItem('reduxState')
+    ? JSON.parse(localStorage.getItem('reduxState'))
+    : {
+          tasks: [],
+          data: [],
+      };
+
+const store = createStore(rootReducer, persistedState, REDUX_DEVTOOLS);
+
+store.subscribe(() => {
+    localStorage.setItem('reduxState', JSON.stringify(store.getState()));
+});
 
 ReactDOM.render(
     <Provider store={store}>

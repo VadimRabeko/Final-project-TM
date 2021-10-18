@@ -7,3 +7,8 @@ export const currentDate = (addDay = 0) => {
 };
 
 export const equalDate = (tasks, date) => tasks.filter((task) => task.dueDate === date);
+
+export const getSrc = (data, assignee) => {
+    const dataUnit = data.filter((dataUnit) => dataUnit.name === assignee);
+    return dataUnit[0].avatar;
+};

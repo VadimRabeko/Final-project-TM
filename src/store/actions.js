@@ -1,6 +1,13 @@
 import * as actions from './actionsTypes';
 import { getUniqueID } from '../utilities';
 
+export function getData({ data }) {
+    return {
+        type: actions.GET_DATA,
+        payload: data,
+    };
+}
+
 export function tasksAdd({ text, assignee, priority, dueDate, status }) {
     return {
         type: actions.TASKS_ADD,
@@ -21,15 +28,6 @@ export function tasksRemove({ id, status }) {
         payload: {
             id,
             status,
-        },
-    };
-}
-
-export function getData({ data }) {
-    return {
-        type: actions.GET_DATA,
-        payload: {
-            data,
         },
     };
 }
