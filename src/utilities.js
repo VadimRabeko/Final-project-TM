@@ -8,6 +8,11 @@ export const currentDate = (addDay = 0) => {
 
 export const equalDate = (tasks, date) => tasks.filter((task) => task.dueDate === date);
 
+export const formatDate = (date) => {
+    const newFormatDate = `${date.slice(-2)}.${date.slice(5, 7)}.${date.slice(0, 4)}`;
+    return newFormatDate;
+};
+
 export const getSrc = (data, assignee) => {
     const dataUnit = data.filter((dataUnit) => dataUnit.name === assignee);
     return dataUnit[0].avatar;
