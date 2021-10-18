@@ -38,7 +38,7 @@ function TaskForm({ data }) {
     }
 
     return (
-        <form className="task_adder" onSubmit={onSubmit}>
+        <form className="task_form" onSubmit={onSubmit}>
             <input className="input" type="text" name="text"></input>
             <select className="select" name="assignee" defaultValue="Assignee">
                 <option disabled hidden>
