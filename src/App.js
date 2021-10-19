@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { NavLink, Switch, Route, Redirect } from 'react-router-dom';
+import { NavLink, Switch, Route } from 'react-router-dom';
 import TaskForm from './components/TaskForm';
 import TaskList from './components/TaskList';
 import Schedule from './components/Schedule';
@@ -31,9 +31,6 @@ function App() {
             </aside>
             <main className="main">
                 <Switch>
-                    <Route exact path="/">
-                        {tasks ? <Redirect to="/TaskList" /> : null}
-                    </Route>
                     <Route path="/TaskList">
                         <TaskList tasks={tasks} data={data} />
                     </Route>
